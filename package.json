@@ -2,9 +2,10 @@
   "name": "vite-plugin-test",
   "version": "1.0.0",
   "description": "a vite plugin",
-  "main": "src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "unbuild",
+    "dev": "pnpm stub",
+    "stub": "unbuild --stub"
   },
   "repository": {
     "type": "git",
@@ -12,12 +13,35 @@
   },
   "author": "",
   "license": "ISC",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "*.d.ts"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    },
+    "./*": "./*"
+  },
+  "dependencies": {
+    "@rollup/pluginutils": "^5.0.2"
+  },
   "peerDependencies": {
     "vite": "^3.1.0"
   },
   "devDependencies": {
     "@types/debug": "^4.1.7",
-    "debug": "^4.3.4"
+    "vite": "^3.2.2",
+    "vite-dev-rpc": "^0.1.0",
+    "vite-hot-client": "^0.1.0",
+    "vite-plugin-pages": "^0.27.1",
+    "unbuild": "^0.9.4",
+    "cross-env": "^7.0.3"
   },
   "bugs": {
     "url": "https://github.com/QinZhen001/vite/issues"

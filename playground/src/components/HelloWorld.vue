@@ -1,9 +1,16 @@
 <script setup lang="ts">
+import { rpc } from '../utils/rpc'
 import { ref } from 'vue'
-
 defineProps<{ msg: string }>()
-
 const count = ref(0)
+
+console.log('1111', rpc)
+
+setTimeout(async () => {
+  const res = rpc.test('hello world')
+  console.log("res", res)
+}, 1000)
+
 </script>
 
 <template>
@@ -21,7 +28,8 @@ const count = ref(0)
 
   <p>
     Check out
-    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank">create-vue</a>, the official Vue + Vite starter
+    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank">create-vue</a>, the official Vue + Vite
+    starter
   </p>
   <p>
     Install
