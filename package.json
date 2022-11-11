@@ -29,6 +29,8 @@
     "./*": "./*"
   },
   "dependencies": {
+    "@types/debug": "^4.1.7",
+    "debug": "^4.3.4",
     "@rollup/pluginutils": "^5.0.2"
   },
   "peerDependencies": {

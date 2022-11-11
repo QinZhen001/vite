@@ -1,10 +1,22 @@
 <script setup lang="ts">
 import { rpc } from '../utils/rpc'
+import {util1} from "../utils/index"
 import { ref } from 'vue'
-defineProps<{ msg: string }>()
-const count = ref(0)
+import { msg } from 'virtual:my-module'
 
-console.log('1111', rpc)
+if (import.meta.hot) {
+  import.meta.hot.on('special-update', (data) => {
+    console.log("custom hot update ",data)
+  })
+}
+
+
+defineProps<{ msg: string }>()
+
+const count = ref(0)
+count.value = util1(count.value)
+console.log('rpc', rpc)
+console.log("virtual:my-module ",  msg)
 
 setTimeout(async () => {
   const res = rpc.test('hello world')
